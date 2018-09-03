@@ -1,12 +1,10 @@
 package com.example.android.popularmoviesproject;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
 
 public class MovieDetails extends AppCompatActivity {
@@ -28,13 +26,14 @@ public class MovieDetails extends AppCompatActivity {
         userRatingTextView = (TextView) findViewById(R.id.tv_user_rating);
         releaseDateTextView = (TextView) findViewById(R.id.tv_release_date);
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            String title = intent.getExtras().getString("title");
-            String posterPath = intent.getExtras().getString("posterPath");
-            String synopsis = intent.getExtras().getString("synopsis");
-            String userRating = intent.getExtras().getString("userRating");
-            String releaseDate = intent.getExtras().getString("releaseDate");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            Movie currentMovie = (Movie) bundle.getParcelable("movieItem");
+            String title = currentMovie.getTitle();
+            String posterPath = currentMovie.getPosterPath();
+            String synopsis = currentMovie.getPlotSynopsis();
+            String userRating = currentMovie.getUserRating();
+            String releaseDate = currentMovie.getReleaseDate();
 
             titleTextView.setText(title);
             synopsisTextView.setText(synopsis);

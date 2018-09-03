@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(int position, View v) {
                         Class destinationClass = MovieDetails.class;
                         Movie currentMovie = movieList.get(position);
+                        String id = currentMovie.getId();
                         String title = currentMovie.getTitle();
                         String posterPath = currentMovie.getPosterPath();
                         String synopsis = currentMovie.getPlotSynopsis();
@@ -126,10 +127,8 @@ public class MainActivity extends AppCompatActivity {
 
                         Intent intentToStartDetailActivity = new Intent(MainActivity.this,
                                 destinationClass);
-                        intentToStartDetailActivity.putExtra("title", title).putExtra
-                                ("posterPath", posterPath).putExtra("synopsis", synopsis)
-                                .putExtra("userRating", userRating).putExtra("releaseDate",
-                                releaseDate);
+                        intentToStartDetailActivity.putExtra("movieItem", new Movie(id, title,
+                                posterPath, synopsis, userRating, releaseDate));
                         startActivity(intentToStartDetailActivity);
                     }
                 });
