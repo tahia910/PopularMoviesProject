@@ -1,0 +1,42 @@
+<resources>
+    <!-- String for the app name [CHAR LIMIT=20] -->
+    <string name="app_name">Popular Movies Project</string>
+
+    <!-- String for the movie details activity title [CHAR LIMIT=20] -->
+    <string name="movie_details_title">Movie Details</string>
+
+    <!-- String for the settings title [CHAR LIMIT=20] -->
+    <string name="settings_title">Settings</string>
+
+    <!-- Text to display in the list when there are no movies found [CHAR LIMIT=NONE] -->
+    <string name="no_movies">No movies found.</string>
+
+    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">No internet connection.</string>
+
+    <!-- Strings for the image contents description [CHAR LIMIT=NONE] -->
+    <string name="image_description">Movie poster</string>
+
+    <!-- Strings to build the image path [CHAR LIMIT=NONE] -->
+    <string name="image_url_base">http://image.tmdb.org/t/p/</string>
+    <string name="image_url_size">w185</string>
+
+    <!-- Strings for the category title of the movie details [CHAR LIMIT=30] -->
+    <string name="category_plot_synopsis">Synopsis: </string>
+    <string name="category_user_rating">User rating: </string>
+    <string name="category_release_date">Release date: </string>
+
+    <!-- Strings for sort-by Preference [CHAR LIMIT=30] -->
+    <string name="settings_sort_by_label">Sort By</string>
+    <string name="settings_sort_by_key" translatable="false">sort_by</string>
+    <string name="settings_sort_by_default" translatable="false">@string/settings_sort_by_most_popular_value</string>
+
+    <!-- Label for sort-by most popular option [CHAR LIMIT=20] -->
+    <string name="settings_sort_by_most_popular_label">Most popular</string>
+    <string name="settings_sort_by_most_popular_value" translatable="false">popularity.desc</string>
+
+    <!-- Label for sort-by highest rate option [CHAR LIMIT=20] -->
+    <string name="settings_sort_by_highest_rate_label">Highest rate</string>
+    <string name="settings_sort_by_highest_rate_value" translatable="false">vote_average.desc</string>
+
+</resources>
