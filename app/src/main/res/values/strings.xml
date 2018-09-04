@@ -2,6 +2,7 @@
     <!-- String for the app name [CHAR LIMIT=20] -->
     <string name="app_name">Popular Movies Project</string>
 
+
     <!-- String for the movie details activity title [CHAR LIMIT=20] -->
     <string name="movie_details_title">Movie Details</string>
 
@@ -28,15 +29,15 @@
 
     <!-- Strings for sort-by Preference [CHAR LIMIT=30] -->
     <string name="settings_sort_by_label">Sort By</string>
-    <string name="settings_sort_by_key" translatable="false">sort_by</string>
+    <string name="settings_sort_by_key" translatable="false">sortBy</string>
     <string name="settings_sort_by_default" translatable="false">@string/settings_sort_by_most_popular_value</string>
 
     <!-- Label for sort-by most popular option [CHAR LIMIT=20] -->
     <string name="settings_sort_by_most_popular_label">Most popular</string>
-    <string name="settings_sort_by_most_popular_value" translatable="false">popularity.desc</string>
+    <string name="settings_sort_by_most_popular_value" translatable="false">popular</string>
 
     <!-- Label for sort-by highest rate option [CHAR LIMIT=20] -->
     <string name="settings_sort_by_highest_rate_label">Highest rate</string>
-    <string name="settings_sort_by_highest_rate_value" translatable="false">vote_average.desc</string>
+    <string name="settings_sort_by_highest_rate_value" translatable="false">top_rated</string>
 
 </resources>

@@ -7,11 +7,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar spinner;
     private MoviePosterAdapter adapter;
 
-    private static final String THEMOVIEDB_REQUEST_URL = "https://api.themoviedb" +
-            ".org/3/discover/movie";
+    private static final String THEMOVIEDB_REQUEST_URL = "http://api.themoviedb.org/3/movie";
 
     /** Please put your API key here. **/
     private static final String API_KEY = "";
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         spinner.setVisibility(View.GONE);
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
 
-        String name = getString(R.string.image_url_base);
         //Check if the device is connected to the internet.
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context
                 .CONNECTIVITY_SERVICE);
@@ -89,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
             String sortBy = sharedPrefs.getString(getString(R.string.settings_sort_by_key),
                     getString(R.string.settings_sort_by_default));
 
-            Uri buildUri = Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendQueryParameter
-                    ("sort_by", sortBy).appendQueryParameter("api_key", API_KEY).build();
+            Uri buildUri = Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendPath(sortBy).appendQueryParameter("api_key", API_KEY).build();
 
             URL url = null;
             try {

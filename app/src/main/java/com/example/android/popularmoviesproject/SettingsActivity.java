@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -25,8 +26,8 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference orderBy = findPreference(getString(R.string.settings_sort_by_key));
-            bindPreferenceSummaryToValue(orderBy);
+            Preference sortBy = findPreference(getString(R.string.settings_sort_by_key));
+            bindPreferenceSummaryToValue(sortBy);
         }
 
         /* This method modifies the movie posters displayed in the main activity according to
