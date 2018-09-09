@@ -22,7 +22,7 @@ public class Movie implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
-    protected Movie(Parcel in) {
+    private Movie(Parcel in) {
         id = in.readString();
         title = in.readString();
         posterPath = in.readString();

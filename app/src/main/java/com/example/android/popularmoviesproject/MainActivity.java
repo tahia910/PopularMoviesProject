@@ -7,14 +7,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,15 +24,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Movie> movieList;
+    private SharedPreferences sharedPreferences;
     private RecyclerView recyclerView;
     private TextView emptyStateTextView;
     private ProgressBar spinner;
-    private MoviePosterAdapter adapter;
 
     private static final String THEMOVIEDB_REQUEST_URL = "http://api.themoviedb.org/3/movie";
 
-    /** Please put your API key here. **/
+    /** Put your API key here. **/
     private static final String API_KEY = "";
 
     @Override
@@ -46,13 +42,14 @@ public class MainActivity extends AppCompatActivity {
         spinner = (ProgressBar) findViewById(R.id.loading_spinner);
         spinner.setVisibility(View.GONE);
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        updateTitle();
 
         //Check if the device is connected to the internet.
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context
                 .CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-        if (isConnected == false) {
+        if (!isConnected) {
             emptyStateTextView.setText(R.string.no_internet_connection);
         } else {
             recyclerView = (RecyclerView) findViewById(R.id.rv_movies);
@@ -60,6 +57,18 @@ public class MainActivity extends AppCompatActivity {
 
             new FetchMovieTask().execute();
         }
+    }
+
+    private void updateTitle(){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences
+                (MainActivity.this);
+        String sortBy = sharedPreferences.getString(getString(R.string.settings_sort_by_key),
+                getString(R.string.settings_sort_by_default));
+
+        if(sortBy.equals(getString(R.string.settings_sort_by_most_popular_value)))
+            getSupportActionBar().setTitle(R.string.settings_sort_by_most_popular_label);
+        else if(sortBy.equals(getString(R.string.settings_sort_by_highest_rate_value)))
+            getSupportActionBar().setTitle(R.string.settings_sort_by_highest_rate_label);
     }
 
     /**
@@ -84,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
          * Check the preferences and build the query url.
          **/
         private URL buildUrl() {
-            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences
                     (MainActivity.this);
-
-            String sortBy = sharedPrefs.getString(getString(R.string.settings_sort_by_key),
+            String sortBy = sharedPreferences.getString(getString(R.string.settings_sort_by_key),
                     getString(R.string.settings_sort_by_default));
 
             Uri buildUri = Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendPath(sortBy).appendQueryParameter("api_key", API_KEY).build();
@@ -109,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(final List<Movie> movieList) {
             if (movieList != null && !movieList.isEmpty()) {
-                adapter = new MoviePosterAdapter(MainActivity.this, movieList);
+                MoviePosterAdapter adapter = new MoviePosterAdapter(MainActivity.this, movieList);
                 recyclerView.setAdapter(adapter);
 
                 adapter.setOnItemClickListener(new MoviePosterAdapter.ClickListener() {
@@ -132,12 +140,18 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentToStartDetailActivity);
                     }
                 });
-
             } else {
                 emptyStateTextView.setText(R.string.no_movies);
             }
             spinner.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateTitle();
+        new FetchMovieTask().execute();
     }
 
     @Override
