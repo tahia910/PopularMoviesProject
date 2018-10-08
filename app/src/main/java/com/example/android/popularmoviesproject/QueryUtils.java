@@ -19,7 +19,7 @@ import java.util.Scanner;
 /**
  * Helper methods related to requesting and receiving data to/from the themoviedb.org API.
  */
-public final class QueryUtils extends AppCompatActivity {
+public final class QueryUtils {
 
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
@@ -85,7 +85,7 @@ public final class QueryUtils extends AppCompatActivity {
                 movieList.add(movieItem);
             }
         } catch (JSONException e) {
-            Log.e("QueryUtils", "Problem parsing the news JSON results", e);
+            Log.e(LOG_TAG, "Problem parsing the news JSON results", e);
         }
         return movieList;
     }

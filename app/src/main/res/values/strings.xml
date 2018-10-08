@@ -2,7 +2,6 @@
     <!-- String for the app name [CHAR LIMIT=20] -->
     <string name="app_name">Popular Movies Project</string>
 
-
     <!-- String for the movie details activity title [CHAR LIMIT=20] -->
     <string name="movie_details_title">Movie Details</string>
 
@@ -11,6 +10,12 @@
 
     <!-- Text to display in the list when there are no movies found [CHAR LIMIT=NONE] -->
     <string name="no_movies">No movies found.</string>
+
+    <string name="no_trailer">No trailers available.</string>
+    <string name="no_synopsis">No synopsis available.</string>
+    <string name="no_user_rating">No user rating available.</string>
+    <string name="no_release_date">Release date unknown.</string>
+    <string name="no_review">No review available.</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">No internet connection.</string>

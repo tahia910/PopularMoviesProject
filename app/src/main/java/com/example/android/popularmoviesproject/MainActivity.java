@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView emptyStateTextView;
     private ProgressBar spinner;
 
-    private static final String THEMOVIEDB_REQUEST_URL = "http://api.themoviedb.org/3/movie";
-
-    /** Put your API key here. **/
-    private static final String API_KEY = "";
+    public static final String THEMOVIEDB_REQUEST_URL = "http://api.themoviedb.org/3/movie";
+    private static final String API_KEY = BuildConfig.THE_GUARDIAN_API_KEY;
+    public static final String KEY_API_QUERY = "api_key";
+    public static final String KEY_MOVIE_ITEM = "movieItem";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +61,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateTitle(){
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences
-                (MainActivity.this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         String sortBy = sharedPreferences.getString(getString(R.string.settings_sort_by_key),
                 getString(R.string.settings_sort_by_default));
 
-        if(sortBy.equals(getString(R.string.settings_sort_by_most_popular_value)))
+        if (sortBy.equals(getString(R.string.settings_sort_by_most_popular_value)))
             getSupportActionBar().setTitle(R.string.settings_sort_by_most_popular_label);
-        else if(sortBy.equals(getString(R.string.settings_sort_by_highest_rate_value)))
+        else if (sortBy.equals(getString(R.string.settings_sort_by_highest_rate_value)))
             getSupportActionBar().setTitle(R.string.settings_sort_by_highest_rate_label);
     }
 
@@ -93,13 +93,12 @@ public class MainActivity extends AppCompatActivity {
          * Check the preferences and build the query url.
          **/
         private URL buildUrl() {
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences
-                    (MainActivity.this);
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
             String sortBy = sharedPreferences.getString(getString(R.string.settings_sort_by_key),
                     getString(R.string.settings_sort_by_default));
 
-            Uri buildUri = Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendPath(sortBy).appendQueryParameter("api_key", API_KEY).build();
-
+            Uri buildUri = Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendPath(sortBy)
+                    .appendQueryParameter(KEY_API_QUERY, API_KEY).build();
             URL url = null;
             try {
                 url = new URL(buildUri.toString());
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * After getting the movie data, set the adapter and the click listener.
          * When the user clicks on a movie poster, an intent will send the information about the
-         * movie to the MovieDetails activity and display the information.
+         * movie to the MovieDetailsActivity activity and display the information.
          **/
         @Override
         protected void onPostExecute(final List<Movie> movieList) {
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(int position, View v) {
-                        Class destinationClass = MovieDetails.class;
+                        Class destinationClass = MovieDetailsActivity.class;
                         Movie currentMovie = movieList.get(position);
                         String id = currentMovie.getId();
                         String title = currentMovie.getTitle();
@@ -135,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Intent intentToStartDetailActivity = new Intent(MainActivity.this,
                                 destinationClass);
-                        intentToStartDetailActivity.putExtra("movieItem", new Movie(id, title,
+                        intentToStartDetailActivity.putExtra(KEY_MOVIE_ITEM, new Movie(id, title,
                                 posterPath, synopsis, userRating, releaseDate));
                         startActivity(intentToStartDetailActivity);
                     }
