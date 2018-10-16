@@ -3,51 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageButton
-        android:id="@+id/play_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:paddingRight="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:srcCompat="@android:drawable/ic_media_play" />
-
-    <TextView
-        android:id="@+id/trailer_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/trailer_title"
-        tools:text="Type" />
-
-    <TextView
-        android:id="@+id/trailer_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constrainedWidth="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:paddingRight="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/play_button"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="Long placeholder for news title that might wrap 2 lines of text or even more" />
+    android:layout_height="wrap_content"
+    android:padding="@dimen/small_padding">
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/trailer_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="28dp" />
+
+    <ImageButton
+        android:id="@+id/play_button"
+        style="@style/TrailerPlayIconStyle"
+        android:contentDescription="@string/tools_play_icon"
+        app:layout_constraintBottom_toTopOf="@+id/trailer_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/trailer_guideline"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <TextView
+        android:id="@+id/trailer_type"
+        style="@style/ItemTitleStyle"
+        app:layout_constraintBottom_toTopOf="@+id/trailer_guideline"
+        app:layout_constraintStart_toStartOf="@+id/trailer_title"
+        tools:text="@string/tools_video_type" />
+
+    <TextView
+        android:id="@+id/trailer_title"
+        style="style/ItemTrailerStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/middle_padding"
+        android:layout_marginLeft="@dimen/middle_padding"
+        android:layout_marginRight="@dimen/middle_padding"
+        android:layout_marginStart="@dimen/middle_padding"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/play_button"
+        app:layout_constraintTop_toTopOf="@+id/trailer_guideline"
+        tools:text="@string/long_text_holder" />
 
 </android.support.constraint.ConstraintLayout>

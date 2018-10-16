@@ -10,26 +10,31 @@
     <style name="TitleStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-condensed</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/middle_padding</item>
     </style>
 
-    <style name="ImageStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">200dp</item>
-        <item name="android:layout_marginBottom">8dp</item>
+    <style name="DetailsImageStyle">
+        <item name="android:layout_width">@dimen/details_poster_width</item>
+        <item name="android:layout_height">@dimen/details_poster_height</item>
+        <item name="android:layout_marginBottom">@dimen/middle_padding</item>
         <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_marginEnd">@dimen/middle_padding</item>
+        <item name="android:layout_marginRight">@dimen/middle_padding</item>
     </style>
 
     <style name="TextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_marginLeft">@dimen/middle_padding</item>
+        <item name="android:layout_marginRight">@dimen/middle_padding</item>
+        <item name="android:layout_marginBottom">@dimen/middle_padding</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
@@ -37,12 +42,75 @@
     <style name="CategoryStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_marginLeft">@dimen/middle_padding</item>
+        <item name="android:layout_marginRight">@dimen/middle_padding</item>
+        <item name="android:layout_marginTop">@dimen/small_padding</item>
+        <item name="android:layout_marginBottom">@dimen/small_padding</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-condensed</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SmallCardviewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/large_padding</item>
+        <item name="android:padding">@dimen/middle_padding</item>
+    </style>
+
+    <style name="CardviewLinearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="RecyclerViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clipToPadding">true</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="FavoriteButtonStyle">
+        <item name="android:layout_width">@dimen/favorite_button_size</item>
+        <item name="android:layout_height">@dimen/favorite_button_size</item>
+        <item name="android:layout_marginLeft">@dimen/large_padding</item>
+        <item name="android:layout_marginStart">@dimen/large_padding</item>
+        <item name="android:layout_marginTop">@dimen/extra_large_padding</item>
+    </style>
+
+    <style name="TrailerPlayIconStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:paddingRight">12dp</item>
+    </style>
+
+    <style name="ItemTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ItemTrailerStyle">
+        <item name="android:paddingBottom">@dimen/small_padding</item>
+        <item name="android:paddingRight">@dimen/bigger_padding</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ItemReviewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/large_padding</item>
+        <item name="android:paddingBottom">@dimen/middle_padding</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

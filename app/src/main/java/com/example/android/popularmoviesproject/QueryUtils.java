@@ -1,13 +1,13 @@
 package com.example.android.popularmoviesproject;
 
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.example.android.popularmoviesproject.FavoriteDatabase.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -73,15 +73,15 @@ public final class QueryUtils {
             JSONArray newsArray = baseJsonResponse.getJSONArray("results");
             for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject currentMovieItem = newsArray.getJSONObject(i);
-                String id = currentMovieItem.getString("id");
+                int id = currentMovieItem.getInt("id");
                 String title = currentMovieItem.getString("title");
-                String posterPath = currentMovieItem.getString("poster_path");
                 String plotSynopsis = currentMovieItem.getString("overview");
                 String userRating = currentMovieItem.getString("vote_average");
                 String releaseDate = currentMovieItem.getString("release_date");
+                String posterPath = currentMovieItem.getString("poster_path");
 
-                Movie movieItem = new Movie(id, title, posterPath, plotSynopsis, userRating,
-                        releaseDate);
+                Movie movieItem = new Movie(id, title, plotSynopsis, userRating,
+                        releaseDate, posterPath);
                 movieList.add(movieItem);
             }
         } catch (JSONException e) {

@@ -24,21 +24,12 @@ public class MovieReviewAdapter extends RecyclerView.Adapter<MovieReviewAdapter
 
     private Context context;
     private final List<MovieReview> movieReviewList;
-    private static ClickListener clickListener;
 
-    public interface ClickListener {
-        void onItemClick(int position, View v);
-    }
-
-    public void setOnItemClickListener(ClickListener clickListener) {
-        MovieReviewAdapter.clickListener = clickListener;
-    }
 
     public MovieReviewAdapter(Context context, List<MovieReview> movieReviewList) {
         this.context = context;
         this.movieReviewList = movieReviewList;
     }
-
 
     @Override
     public MovieReviewAdapterViewHolder onCreateViewHolder(ViewGroup parent, int i) {
@@ -66,17 +57,11 @@ public class MovieReviewAdapter extends RecyclerView.Adapter<MovieReviewAdapter
     }
 
 
-    public class MovieReviewAdapterViewHolder extends RecyclerView.ViewHolder implements View
-            .OnClickListener {
+    public class MovieReviewAdapterViewHolder extends RecyclerView.ViewHolder {
 
         private MovieReviewAdapterViewHolder(View view) {
             super(view);
-            view.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(final View v) {
-            clickListener.onItemClick(getAdapterPosition(), v);
-        }
     }
 }

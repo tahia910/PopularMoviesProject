@@ -93,7 +93,7 @@ public class MovieReviewQueryUtils {
                 reviewList.add(reviewItem);
             }
         } catch (JSONException e) {
-            Log.e("QueryUtils", "Problem parsing the news JSON results", e);
+            Log.e(LOG_TAG, "Problem parsing the news JSON results", e);
         }
         return reviewList;
     }

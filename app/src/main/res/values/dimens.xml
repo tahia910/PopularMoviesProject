@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="middle_padding">8dp</dimen>
+    <dimen name="bigger_padding">12dp</dimen>
+    <dimen name="large_padding">16dp</dimen>
+    <dimen name="extra_large_padding">24dp</dimen>
+
+    <dimen name="main_poster_height">250dp</dimen>
+    <dimen name="details_poster_height">250dp</dimen>
+    <dimen name="details_poster_width">150dp</dimen>
+    <dimen name="favorite_button_size">40dp</dimen>
+    <dimen name="trailer_cardview_height">130dp</dimen>
+    <dimen name="review_cardview_height">150dp</dimen>
+
+</resources>

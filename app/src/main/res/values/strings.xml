@@ -22,15 +22,30 @@
 
     <!-- Strings for the image contents description [CHAR LIMIT=NONE] -->
     <string name="image_description">Movie poster</string>
+    <string name="favorite_button_description">Favorite button</string>
+
+    <!-- Strings for the XML tools [CHAR LIMIT=NONE] -->
+    <string name="tools_title">Title</string>
+    <string name="tools_empty_view">Empty view</string>
+    <string name="long_text_holder">Long placeholder for a text that might wrap 2 lines of text or
+        even more</string>
+    <string name="tools_author">Author</string>
+    <string name="tools_video_type">Author</string>
+    <string name="tools_play_icon">Play icon</string>
 
     <!-- Strings to build the image path [CHAR LIMIT=NONE] -->
     <string name="image_url_base">http://image.tmdb.org/t/p/</string>
     <string name="image_url_size">w185</string>
 
     <!-- Strings for the category title of the movie details [CHAR LIMIT=30] -->
-    <string name="category_plot_synopsis">Synopsis: </string>
-    <string name="category_user_rating">User rating: </string>
-    <string name="category_release_date">Release date: </string>
+    <string name="category_plot_synopsis">Synopsis:</string>
+    <string name="category_user_rating">User rating:</string>
+    <string name="category_release_date">Release date:</string>
+    <string name="category_trailer">Trailers:</string>
+    <string name="category_review">Reviews:</string>
+
+    <!-- String to display the maximum rating possible for user rating [CHAR LIMIT=10] -->
+    <string name="user_rating_maximum">\u0020/\u002010</string>
 
     <!-- Strings for sort-by Preference [CHAR LIMIT=30] -->
     <string name="settings_sort_by_label">Sort By</string>
@@ -44,5 +59,9 @@
     <!-- Label for sort-by highest rate option [CHAR LIMIT=20] -->
     <string name="settings_sort_by_highest_rate_label">Highest rate movies</string>
     <string name="settings_sort_by_highest_rate_value" translatable="false">top_rated</string>
+
+    <!-- Label for display favorite movies option [CHAR LIMIT=20] -->
+    <string name="settings_sort_by_favorite_label">Favorite movies</string>
+    <string name="settings_sort_by_favorite_value" translatable="false">favorite_movies</string>
 
 </resources>

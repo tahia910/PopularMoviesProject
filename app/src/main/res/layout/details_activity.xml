@@ -1,39 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="12dp"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tv_title"
-        style="@style/TitleStyle" />
+    android:layout_height="wrap_content">
 
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/bigger_padding">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/title_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/bigger_padding"
+                android:layout_marginRight="@dimen/bigger_padding"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/TitleStyle"
+                    tools:text="@string/tools_title" />
+            </android.support.v7.widget.CardView>
+
+            <ImageButton
+                android:id="@+id/favorite_button"
+                style="@style/FavoriteButtonStyle"
+                android:background="@drawable/ic_star_grey"
+                android:contentDescription="@string/favorite_button_description"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/iv_poster" />
 
             <ImageView
                 android:id="@+id/iv_poster"
-                style="@style/ImageStyle"
-                android:contentDescription="@string/image_description" />
-
+                style="@style/DetailsImageStyle"
+                android:contentDescription="@string/image_description"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/title_cardview" />
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:id="@+id/user_rating_cardview"
+                style="@style/SmallCardviewStyle"
+                app:layout_constraintStart_toStartOf="@+id/favorite_button"
+                app:layout_constraintTop_toBottomOf="@+id/favorite_button">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    style="@style/CardviewLinearLayoutStyle">
+
+                    <TextView
+                        style="@style/CategoryStyle"
+                        android:text="@string/category_user_rating"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_user_rating"
+                        style="@style/TextStyle"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/release_date_cardview"
+                style="@style/SmallCardviewStyle"
+                app:layout_constraintStart_toStartOf="@+id/user_rating_cardview"
+                app:layout_constraintTop_toBottomOf="@+id/user_rating_cardview">
+
+                <LinearLayout
+                    style="@style/CardviewLinearLayoutStyle">
+
+                    <TextView
+                        style="@style/CategoryStyle"
+                        android:text="@string/category_release_date"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_release_date"
+                        style="@style/TextStyle"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/synopsis_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/iv_poster"
+                app:layout_constraintTop_toBottomOf="@+id/iv_poster">
+
+                <LinearLayout
+                    style="@style/CardviewLinearLayoutStyle">
 
                     <TextView
                         style="@style/CategoryStyle"
@@ -46,103 +119,64 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/trailer_cardview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:layout_height="@dimen/trailer_cardview_height"
+                android:layout_marginTop="@dimen/small_padding"
+                android:padding="@dimen/middle_padding"
+                app:layout_constraintStart_toStartOf="@+id/synopsis_cardview"
+                app:layout_constraintTop_toBottomOf="@+id/synopsis_cardview">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    style="@style/CardviewLinearLayoutStyle"
+                    android:paddingBottom="@dimen/middle_padding">
 
                     <TextView
                         style="@style/CategoryStyle"
-                        android:text="@string/category_user_rating" />
-
-                    <TextView
-                        android:id="@+id/tv_user_rating"
-                        style="@style/TextStyle" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/CategoryStyle"
-                        android:text="@string/category_release_date" />
-
-                    <TextView
-                        android:id="@+id/tv_release_date"
-                        style="@style/TextStyle" />
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/CategoryStyle"
-                        android:text="Trailers:" />
+                        android:text="@string/category_trailer" />
 
                     <TextView
                         android:id="@+id/trailer_empty_view"
                         style="@style/TextStyle"
-                        tools:text="Empty view" />
+                        tools:text="@string/tools_empty_view" />
 
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/trailer_list"
+                        style="@style/RecyclerViewStyle" />
 
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/trailer_list"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:dividerHeight="1dp"
-                            android:orientation="vertical"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/review_cardview"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginBottom="8dp">
+                android:layout_height="@dimen/review_cardview_height"
+                android:layout_marginBottom="@dimen/middle_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                android:padding="@dimen/middle_padding"
+                app:layout_constraintStart_toStartOf="@+id/trailer_cardview"
+                app:layout_constraintTop_toBottomOf="@+id/trailer_cardview">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    style="@style/CardviewLinearLayoutStyle"
+                    android:paddingBottom="@dimen/middle_padding">
 
                     <TextView
                         style="@style/CategoryStyle"
-                        android:text="Reviews:" />
+                        android:text="@string/category_review" />
 
                     <TextView
                         android:id="@+id/review_empty_view"
                         style="@style/TextStyle"
-                        tools:text="Empty view" />
-
+                        tools:text="@string/tools_empty_view" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/review_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:dividerHeight="1dp"
-                        android:orientation="vertical"/>
+                        style="@style/RecyclerViewStyle" />
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
     </ScrollView>
-
 </LinearLayout>
