@@ -10,13 +10,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +29,6 @@ import com.example.android.popularmoviesproject.FavoriteDatabase.Movie;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
-import butterknife.BuildConfig;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
 
         //Check if the device is connected to the internet.
-        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context
-                .CONNECTIVITY_SERVICE);
+        ConnectivityManager cm =
+                (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
         if (!isConnected) {
@@ -151,8 +148,8 @@ public class MainActivity extends AppCompatActivity {
             String sortBy = sharedPreferences.getString(getString(R.string.settings_sort_by_key),
                     getString(R.string.settings_sort_by_default));
 
-            Uri buildUri = Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendPath(sortBy)
-                    .appendQueryParameter(KEY_API_QUERY, API_KEY).build();
+            Uri buildUri =
+                    Uri.parse(THEMOVIEDB_REQUEST_URL).buildUpon().appendPath(sortBy).appendQueryParameter(KEY_API_QUERY, API_KEY).build();
             URL url = null;
             try {
                 url = new URL(buildUri.toString());

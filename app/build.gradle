@@ -17,7 +17,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'THE_GUARDIAN_API_KEY', myApiTheGuardian
+        it.buildConfigField('String', 'THE_GUARDIAN_API_KEY', myApiTheGuardian)
     }
 }
 
